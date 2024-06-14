@@ -99,7 +99,7 @@ done
 
 #8.CombingGVCFs
 #gvcf会记录每一个位点到情况，包括有无突变，vcf只记录突变位点情况
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
     gatk CombineGVCFs  \
     -R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -113,7 +113,7 @@ done
 
 
 #9.GenotypeGVCFs，-all-sites可以保留所有位点
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk GenotypeGVCFs \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -123,7 +123,7 @@ done
 
 
 #10.SelectVariants,分别选择SNP和INDEL
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk SelectVariants \
 	-V PATH/genotypevcf.${i}.vcf.gz \
@@ -132,7 +132,7 @@ do
 	-O snp.${i}.vcf.gz
 done
 
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk SelectVariants \
 	-V PATH/genotypevcf.${i}.vcf.gz \
@@ -146,7 +146,7 @@ done
 -L	chromosome，提取指定染色体
 
 #11.VariantFiltration，分别硬过滤
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk VariantFiltration \
     -V snp.${i}.vcf.gz \
@@ -156,7 +156,7 @@ do
     -O hard.snp.${i}.vcf.gz
 done
 
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk VariantFiltration \
 	-V indel.${i}.vcf.gz \
@@ -167,7 +167,7 @@ done
 
 
 #12.保留过滤后的位点，如果仅仅硬过滤这一步已经是最后一步，如果要软过滤则需要用硬过滤去训练数据集。
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk SelectVariants -V hard.snp.${i}.vcf.gz --exclude-filtered -O hard.pass.snp.${i}.vcf.gz
 	#awk '/^#/||$7=="PASS"' hard.snp.${i}.vcf > hard.pass.snp.${i}.vcf
@@ -186,7 +186,7 @@ cp hard.pass.snp.X.vcf.gz ./X.pass.vcf.gz
 #13.VariantRecalibrator,SNP
 #输入文件为第9步得到的genotypevcf
 #训练集为硬过滤vcf文件及dbsnp数据库的数据，需要注意数据集用到的参考基因组版本要对应。
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk VariantRecalibrator \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -202,7 +202,7 @@ do
 done
 
 #Apply recalibration,SNP
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk ApplyVQSR \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -215,7 +215,7 @@ do
 done
 
 #VariantRecalibrator,INDEL，输入文件为上一步得到的vcf文件，gatk可以通过"-mode"选项分别对snp和indel进行VQSR
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk VariantRecalibrator \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -231,7 +231,7 @@ do
 done
 
 #Apply recalibration,INDEL
-for i in {1..19} MT X Y
+for i in {1..19} X
 do
 	gatk ApplyVQSR \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
@@ -260,6 +260,8 @@ gatk GatherVcfs \
  
  
 #15.remove filter
-awk '/^#/||$7=="PASS"' ./7.vcf/autosome.raw.vcf > pass.vcf
+awk '/^#/||$7=="PASS"' ./7.vcf/autosome.raw.vcf > autosome.pass.vcf
+mv ./6.final/${i}.vqsr.vcf.gz ./7.vcf/x.raw.vcf
+awk '/^#/||$7=="PASS"' ./7.vcf/x.raw.vcf > x.pass.vcf
 #gatk SelectVariants -V ./7.vcf/autosome.raw.vcf --exclude-filtered -O pass.vcf
 
