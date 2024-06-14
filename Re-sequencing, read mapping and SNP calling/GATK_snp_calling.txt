@@ -16,7 +16,7 @@ gatk IndexFeatureFile -I mm10.vcf.gz
 
 
 #1.构建文件夹
-mkdir 2.filter 3.bam 4.BQSR 5.g.vcf
+mkdir 2.filter 3.bam 4.BQSR 5.g.vcf 6.final 7.vcf
 
 
 #2.filter，过滤原始数据
