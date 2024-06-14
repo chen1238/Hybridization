@@ -1,3 +1,4 @@
+https://zhuanlan.zhihu.com/p/69726572
 conda create -n gatk4
 conda activate gatk4
 conda install -c bioconda gatk4
@@ -6,17 +7,18 @@ conda install -c bioconda bwa-mem2
 
 #建立索引
 #bwa参考基因组
-bwa-mem2 index fasta.fa
+bwa-mem2 index grcm38.fa
 #gatk参考基因组
-gatk CreateSequenceDictionary -R index fasta.fa -O fasta.fa.dict
+gatk CreateSequenceDictionary -R grcm38.fa -O grcm38.fa.dict
 #samtools参考基因组，可以查看各染色体长度
-samtools faidx fasta.fa
+samtools faidx grcm38.fa
 #gatk中参考snp数据集vcf.gz的索引(tbi)
-gatk IndexFeatureFile -I mm10.vcf.gz
+gatk IndexFeatureFile -I mgp.v5.merged.snps_all.dbSNP142.vcf.gz
+gatk IndexFeatureFile -I mgp.v5.merged.indels.dbSNP142.normed.vcf.gz
 
 
 #1.构建文件夹
-mkdir 2.filter 3.bam 4.BQSR 5.g.vcf 6.final 7.vcf
+mkdir 1.raw_data 2.filter 3.bam 4.BQSR 5.g.vcf 6.vcf 7.vqsr_snp 8.vqsr_indel 9.final 10.vcf train_set
 
 
 #2.filter，过滤原始数据
@@ -84,7 +86,7 @@ done
 for i in `cut -f 3 sampleName_clientId-1.txt`
 do
   mkdir ./5.g.vcf/${i}
-  for j in {1..19} MT X Y
+  for j in {1..19} X
   do
      gatk  HaplotypeCaller \
      -ERC GVCF \               #不加该选项默认输出单样本vcf文件，适合单样本。GVCF输出突变，非突变以区间呈现，为了合并多个样本。BP_RESOLUTION输出突变和非突变的所有位点。
@@ -106,7 +108,7 @@ do
     -V samples1.${i}.g.vcf.gz  \
     -V samples2.${i}.g.vcf.gz  \
     -V samples3.${i}.g.vcf.gz  \
-    -O PATH/${i}.gvcf.gz
+    -O ./5.g.vcf/${i}.gvcf.gz
 	#合并所有样本，得到所有样本的单个染色体的gvcf文件
 	#样本过多-V samples.list列表输入
 done                
@@ -117,8 +119,8 @@ for i in {1..19} X
 do
 	gatk GenotypeGVCFs \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
-	-V PATH/${i}.g.vcf.gz \
-	-O PATH/genotypevcf.${i}.vcf.gz
+	-V ./5.g.vcf/${i}.g.vcf.gz \
+	-O ./6.vcf/genotypevcf.${i}.vcf.gz
 done
 
 
@@ -126,7 +128,7 @@ done
 for i in {1..19} X
 do
 	gatk SelectVariants \
-	-V PATH/genotypevcf.${i}.vcf.gz \
+	-V ./6.vcf/genotypevcf.${i}.vcf.gz \
 	-select-type SNP \
 	--restrict-alleles-to BIALLELIC \
 	-O snp.${i}.vcf.gz
@@ -135,7 +137,7 @@ done
 for i in {1..19} X
 do
 	gatk SelectVariants \
-	-V PATH/genotypevcf.${i}.vcf.gz \
+	-V ./6.vcf/genotypevcf.${i}.vcf.gz \
 	-select-type INDEL \
 	--max-indel-size 50 \
 	--restrict-alleles-to BIALLELIC \
@@ -153,7 +155,7 @@ do
     --filter-expression "QUAL < 30 || QD < 2.0 || MQ < 40.0 || FS > 60.0 || SOR > 3.0 || MQRankSum < -12.5 || ReadPosRankSum < -8.0" \
     --filter-name "Filter" \
     --cluster-window-size 10  --cluster-size 3 --missing-values-evaluate-as-failing \  #如果多个snp聚在一起，则视为snp簇，可用可不用
-    -O hard.snp.${i}.vcf.gz
+    -O ./train_set/hard.snp.${i}.vcf.gz
 done
 
 for i in {1..19} X
@@ -162,25 +164,17 @@ do
 	-V indel.${i}.vcf.gz \
 	--filter-expression "QUAL<30 || QD < 2.0 || FS > 200.0 || SOR > 10.0 || InbreedingCoeff < -0.8 || ReadPosRankSum < -20.0" \
 	--filter-name "Filter" \
-	-O hard.indel.${i}.vcf.gz
+	-O ./train_set/hard.indel.${i}.vcf.gz
 done
 
 
 #12.保留过滤后的位点，如果仅仅硬过滤这一步已经是最后一步，如果要软过滤则需要用硬过滤去训练数据集。
 for i in {1..19} X
 do
-	gatk SelectVariants -V hard.snp.${i}.vcf.gz --exclude-filtered -O hard.pass.snp.${i}.vcf.gz
+	gatk SelectVariants -V ./train_set/hard.snp.${i}.vcf.gz --exclude-filtered -O ./train_set/hard.pass.snp.${i}.vcf.gz
 	#awk '/^#/||$7=="PASS"' hard.snp.${i}.vcf > hard.pass.snp.${i}.vcf
-	gatk SelectVariants -V hard.indel.${i}.vcf.gz --exclude-filtered -O hard.pass.indel.${i}.vcf.gz
+	gatk SelectVariants -V ./train_set/hard.indel.${i}.vcf.gz --exclude-filtered -O ./train_set/hard.pass.indel.${i}.vcf.gz
 done
-#合并每条染色体vcf文件
-gatk GatherVcfs -R /media/rui/4t/Rgrcm38p6/grcm38.fa \
-	-V hard.pass.snp.1.vcf.gz \
-	-V hard.pass.snp.2.vcf.gzv\
-	-V hard.pass.snp.3.vcf.gz \
-	...\
-	-O Autosome.pass.vcf.gz
-cp hard.pass.snp.X.vcf.gz ./X.pass.vcf.gz
 
 
 #13.VariantRecalibrator,SNP
@@ -190,15 +184,15 @@ for i in {1..19} X
 do
 	gatk VariantRecalibrator \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
-	-V PATH/genotypevcf.${i}.vcf.gz \
-	-resource:HARD,known=false,training=true,truth=true,prior=10.0 ./hard.pass.snp.${i}.vcf.gz \
+	-V ./6.vcf/genotypevcf.${i}.vcf.gz \
+	-resource:HARD,known=false,training=true,truth=true,prior=10.0 ./train_set/hard.pass.snp.${i}.vcf.gz \
 	-resource:dbsnp,known=false,training=true,truth=false,prior=12.0 /media/rui/4t/Rgrcm38p6/mgp.v5.merged.snps_all.dbSNP142.vcf.gz \
 	-an DP -an QD -an FS -an SOR -an ReadPosRankSum -an MQRankSum \
 	-mode SNP \
 	-tranche 100.0 -tranche 99.9 -tranche 99.0 -tranche 95.0 -tranche 90.0 \
-	--rscript-file ./4.vqsr_snp/${i}.snp.plots.R \
-	--tranches-file ./4.vqsr_snp/${i}.snp.tranches \
-	-O ./4.vqsr_snp/${i}.snp.recal
+	--rscript-file ./7.vqsr_snp/${i}.snp.plots.R \
+	--tranches-file ./7.vqsr_snp/${i}.snp.tranches \
+	-O ./7.vqsr_snp/${i}.snp.recal
 done
 
 #Apply recalibration,SNP
@@ -206,12 +200,12 @@ for i in {1..19} X
 do
 	gatk ApplyVQSR \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
-	-V PATH/genotypevcf.${i}.vcf.gz \
-	--truth-sensitivity-filter-level 99.0 \
-	--tranches-file ./4.vqsr_snp/${i}.snp.tranches \
-	--recal-file ./4.vqsr_snp/${i}.snp.recal \
+	-V ./6.vcf/genotypevcf.${i}.vcf.gz \
+	--truth-sensitivity-filter-level 95.0 \
+	--tranches-file ./7.vqsr_snp/${i}.snp.tranches \
+	--recal-file ./7.vqsr_snp/${i}.snp.recal \
 	-mode SNP \
-	-O ./4.vqsr_snp/${i}.vqsr.snp.vcf.gz
+	-O ./7.vqsr_snp/${i}.vqsr.snp.vcf.gz
 done
 
 #VariantRecalibrator,INDEL，输入文件为上一步得到的vcf文件，gatk可以通过"-mode"选项分别对snp和indel进行VQSR
@@ -219,15 +213,15 @@ for i in {1..19} X
 do
 	gatk VariantRecalibrator \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
-	-V ./4.vqsr_snp/${i}.vqsr.snp.vcf.gz \
-	-resource:HARD,known=false,training=true,truth=true,prior=10.0 ./hard.pass.indel.${i}.vcf.gz \
+	-V ./7.vqsr_snp/${i}.vqsr.snp.vcf.gz \
+	-resource:HARD,known=false,training=true,truth=true,prior=10.0 ./train_set/hard.pass.indel.${i}.vcf.gz \
 	-resource:dbsnp,known=false,training=true,truth=false,prior=12.0 /media/rui/4t/Rgrcm38p6/mgp.v5.merged.indels.dbSNP142.normed.vcf.gz \
 	-an DP -an QD -an FS -an SOR -an ReadPosRankSum -an MQRankSum \
 	-mode INDEL \
 	-tranche 100.0 -tranche 99.9 -tranche 99.0 -tranche 95.0 -tranche 90.0 \
-	--rscript-file ./5.vqsr_indel/${i}.indel.plots.R \
-	--tranches-file ./5.vqsr_indel/${i}.indel.tranches \
-	-O ./5.vqsr_indel/${i}.indel.recal
+	--rscript-file ./8.vqsr_indel/${i}.indel.plots.R \
+	--tranches-file ./8.vqsr_indel/${i}.indel.tranches \
+	-O ./8.vqsr_indel/${i}.indel.recal
 done
 
 #Apply recalibration,INDEL
@@ -235,33 +229,44 @@ for i in {1..19} X
 do
 	gatk ApplyVQSR \
 	-R /media/rui/4t/Rgrcm38p6/grcm38.fa \
-	-V ./4.vqsr_snp/${i}.vqsr.snp.vcf.gz \
-	--truth-sensitivity-filter-level 99.0 \
-	--tranches-file ./5.vqsr_indel/${i}.indel.tranches \
-	--recal-file ./5.vqsr_indel/${i}.indel.recal \
+	-V ./7.vqsr_snp/${i}.vqsr.snp.vcf.gz \
+	--truth-sensitivity-filter-level 95.0 \
+	--tranches-file ./8.vqsr_indel/${i}.indel.tranches \
+	--recal-file ./8.vqsr_indel/${i}.indel.recal \
 	-mode INDEL \
-	-O ./6.final/${i}.vqsr.vcf.gz
+	-O ./9.final/${i}.vqsr.vcf.gz
 done
 
 #14.gatk GatherVcfs，合并染色体
 gatk GatherVcfs \
  -R /media/rui/4t/Rgrcm38p6/grcm38.fa \
- -I ./6.final/1.vqsr.vcf.gz -I ./6.final/2.vqsr.vcf.gz \
- -I ./6.final/3.vqsr.vcf.gz -I ./6.final/4.vqsr.vcf.gz \
- -I ./6.final/5.vqsr.vcf.gz -I ./6.final/6.vqsr.vcf.gz \
- -I ./6.final/7.vqsr.vcf.gz -I ./6.final/8.vqsr.vcf.gz \
- -I ./6.final/9.vqsr.vcf.gz -I ./6.final/10.vqsr.vcf.gz \
- -I ./6.final/11.vqsr.vcf.gz -I ./6.final/12.vqsr.vcf.gz \
- -I ./6.final/13.vqsr.vcf.gz -I ./6.final/14.vqsr.vcf.gz \
- -I ./6.final/15.vqsr.vcf.gz -I ./6.final/16.vqsr.vcf.gz \
- -I ./6.final/17.vqsr.vcf.gz -I ./6.final/18.vqsr.vcf.gz \
- -I ./6.final/19.vqsr.vcf.gz \
- -O ./7.vcf/autosome.raw.vcf
+ -I ./9.final/1.vqsr.vcf.gz -I ./9.final/2.vqsr.vcf.gz \
+ -I ./9.final/3.vqsr.vcf.gz -I ./9.final/4.vqsr.vcf.gz \
+ -I ./9.final/5.vqsr.vcf.gz -I ./9.final/6.vqsr.vcf.gz \
+ -I ./9.final/7.vqsr.vcf.gz -I ./9.final/8.vqsr.vcf.gz \
+ -I ./9.final/9.vqsr.vcf.gz -I ./9.final/10.vqsr.vcf.gz \
+ -I ./9.final/11.vqsr.vcf.gz -I ./9.final/12.vqsr.vcf.gz \
+ -I ./9.final/13.vqsr.vcf.gz -I ./9.final/14.vqsr.vcf.gz \
+ -I ./9.final/15.vqsr.vcf.gz -I ./9.final/16.vqsr.vcf.gz \
+ -I ./9.final/17.vqsr.vcf.gz -I ./9.final/18.vqsr.vcf.gz \
+ -I ./9.final/19.vqsr.vcf.gz \
+ -O ./10.vcf/autosome.raw.vcf
  
  
 #15.remove filter
-awk '/^#/||$7=="PASS"' ./7.vcf/autosome.raw.vcf > autosome.pass.vcf
-mv ./6.final/${i}.vqsr.vcf.gz ./7.vcf/x.raw.vcf
-awk '/^#/||$7=="PASS"' ./7.vcf/x.raw.vcf > x.pass.vcf
-#gatk SelectVariants -V ./7.vcf/autosome.raw.vcf --exclude-filtered -O pass.vcf
+#gatk SelectVariants -V ./10.vcf/autosome.raw.vcf --exclude-filtered -O autosome.pass.vcf
+awk '/^#/||$7=="PASS"' ./10.vcf/autosome.raw.vcf > autosome.pass.vcf
 
+mv ./9.final/X.vqsr.vcf ./10.vcf/x.raw.vcf && awk '/^#/||$7=="PASS"' ./10.vcf/x.raw.vcf > x.pass.vcf
+
+gatk SelectVariants \
+	-V autosome.pass.vcf \
+	-select-type SNP \
+	--restrict-alleles-to BIALLELIC \
+	-O autosome.pass.snp.vcf
+
+gatk SelectVariants \
+	-V x.pass.vcf \
+	-select-type SNP \
+	--restrict-alleles-to BIALLELIC \
+	-O x.pass.snp.vcf
