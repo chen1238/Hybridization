@@ -1,0 +1,17 @@
+FA1	d
+FA4	d
+FA5	d
+FA6	d
+FA7	d
+KA1	m
+KA2	m
+KA5	m
+KA6	m
+KA9	m
+CE2	h
+CE3	h
+CE4	h
+CE5	h
+CE7	h
+CE8	h
+SP1	Outgroup
