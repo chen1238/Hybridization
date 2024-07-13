@@ -1,0 +1,2 @@
+P1	P2	P3	Dstatistic	Z-score	p-value	f4-ratio	BBAA	ABBA	BABA
+c	h	m	0.429381	6.80863	9.85351e-12	0.102387	151707	33139.9	13229.7
