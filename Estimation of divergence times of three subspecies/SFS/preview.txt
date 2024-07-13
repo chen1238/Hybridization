@@ -1,0 +1,26 @@
+Processing 4 populations - odict_keys(['CAS1', 'CAS2', 'DOM', 'MUS'])
+
+    Running preview mode. We will print out the results for # of segregating sites
+    for multiple values of projecting down for each population. The dadi
+    manual recommends maximizing the # of seg sites for projections, but also
+    a balance must be struck between # of seg sites and sample size.
+
+    For each population you should choose the value of the projection that looks
+    best and then rerun easySFS with the `--proj` flag.
+    
+CAS1
+(2, 14556189)	(3, 21834283)	(4, 26890845)	(5, 30836641)	(6, 34097032)	(7, 36884699)	(8, 39323053)	(9, 41490871)	(10, 43441952)	(11, 45214949)	(12, 46838699)	
+
+
+CAS2
+(2, 9103827)	(3, 13655740)	(4, 16633584)	(5, 18824393)	(6, 20538470)	(7, 21930965)	(8, 23090853)	(9, 24074019)	(10, 24917893)	(11, 25648759)	(12, 26285659)	
+
+
+DOM
+(2, 7012864)	(3, 10519295)	(4, 12949176)	(5, 14840780)	(6, 16405251)	(7, 17748160)	(8, 18930016)	(9, 19988801)	(10, 20949975)	(11, 21831489)	(12, 22646490)	
+
+
+MUS
+(2, 5252069)	(3, 7878103)	(4, 9684930)	(5, 11082152)	(6, 12230415)	(7, 13210041)	(8, 14067258)	(9, 14831244)	(10, 15521710)	(11, 16152683)	(12, 16734542)	
+
+
