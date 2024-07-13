@@ -20,8 +20,8 @@ Insert size           = 300
 Platform              = illumina
 Single/Paired         = PE
 Combined reads        = 
-Forward reads         = /media/rui/ND-2024/1.raw_data/NE3_good_1.fq.gz
-Reverse reads         = /media/rui/ND-2024/1.raw_data/NE3_good_2.fq.gz
+Forward reads         = /media/rui/ND-2024/1.raw_data/GX14_good_1.fq.gz
+Reverse reads         = /media/rui/ND-2024/1.raw_data/GX14_good_2.fq.gz
 Store Hash            =
 
 Heteroplasmy:
@@ -35,4 +35,4 @@ Optional:
 Insert size auto      = yes
 Use Quality Scores    = no
 Reduce ambigious N's  = 
-Output path           = /media/rui/ND-2024/9.mit/NE3/
+Output path           = /media/rui/ND-2024/9.mit/GX14/
