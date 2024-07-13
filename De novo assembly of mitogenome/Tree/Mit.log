@@ -1,0 +1,592 @@
+IQ-TREE multicore version 2.0.3 for Linux 64-bit built Dec 20 2020
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    ruirui (AVX2, FMA3, 1006 GB RAM)
+Command: iqtree -s ../Mit.mafft.trimal.fasta -pre Mit -m MFP -B 1000
+Seed:    556717 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Sat Jun  8 20:11:38 2024
+Kernel:  AVX+FMA - 1 threads (64 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 64 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading alignment file ../Mit.mafft.trimal.fasta ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 350 sequences with 16289 columns, 1755 distinct patterns
+1642 parsimony-informative, 1120 singleton sites, 13527 constant sites
+       Gap/Ambiguity  Composition  p-value
+   1  2949     0.08%    passed     99.89%
+   2  2954     0.00%    passed     99.88%
+   3  4276     0.00%    passed     97.87%
+   4  4283     0.00%    passed     99.85%
+   5  4295     0.00%    passed     99.96%
+   6  4296     0.00%    passed     99.81%
+   7  4297     0.02%    passed     99.82%
+   8  4299     0.01%    passed     99.98%
+   9  4315     0.00%    passed     99.84%
+  10  4316     0.00%    passed     99.84%
+  11  4317     0.00%    passed     99.84%
+  12  4319     0.00%    passed     99.84%
+  13  AF1      0.06%    passed     99.47%
+  14  AF2      0.00%    passed     99.09%
+  15  AF3      0.00%    passed     99.37%
+  16  AF4      0.00%    passed     99.86%
+  17  AF5      0.01%    passed    100.00%
+  18  AF6      0.00%    passed     99.39%
+  19  AL1      0.01%    passed     99.62%
+  20  AL2      0.01%    passed     99.68%
+  21  AR1      0.00%    passed     99.54%
+  22  AR2      0.00%    passed     99.85%
+  23  BA2      0.00%    passed     99.95%
+  24  BA3      0.00%    passed     99.91%
+  25  BY1      0.00%    passed     99.88%
+  26  BY2      0.00%    passed     99.88%
+  27  CE2      0.00%    passed     99.65%
+  28  CE3      0.00%    passed     99.38%
+  29  CE4      0.00%    passed     99.70%
+  30  CE5      0.00%    passed     99.25%
+  31  CE7      0.00%    passed     99.38%
+  32  CE8      0.00%    passed     99.68%
+  33  CN1      0.00%    passed     99.26%
+  34  CN10     0.00%    passed     99.82%
+  35  CN11     0.00%    passed     99.89%
+  36  CN12     0.00%    passed     99.76%
+  37  CN13     0.00%    passed     99.67%
+  38  CN14     0.00%    passed     99.67%
+  39  CN15     0.01%    passed     99.91%
+  40  CN16     0.00%    passed     99.55%
+  41  CN17     0.01%    passed     99.95%
+  42  CN18     0.00%    passed     99.91%
+  43  CN19     0.01%    passed     99.96%
+  44  CN2      0.01%    passed     99.95%
+  45  CN20     0.01%    passed     99.77%
+  46  CN21     0.01%    passed     99.93%
+  47  CN23     0.00%    passed     99.87%
+  48  CN24     0.00%    passed     99.97%
+  49  CN3      0.00%    passed     99.96%
+  50  CN4      0.00%    passed     99.92%
+  51  CN5      0.00%    passed     99.92%
+  52  CN6      0.00%    passed    100.00%
+  53  CN7      0.01%    passed     99.98%
+  54  CN8      0.00%    passed     99.92%
+  55  CN9      0.01%    passed     99.93%
+  56  CZ1      0.00%    passed     99.97%
+  57  DT1      0.00%    passed     99.85%
+  58  ES1      0.00%    passed     99.64%
+  59  FH1      0.00%    passed     99.09%
+  60  FA1      0.00%    passed     96.32%
+  61  FA4      0.00%    passed     98.01%
+  62  FA5      0.00%    passed     98.15%
+  63  FA6      0.00%    passed     96.32%
+  64  FA7      0.00%    passed     98.15%
+  65  FA8      0.00%    passed     98.31%
+  66  GD15     0.00%    passed     99.98%
+  67  GD7      0.00%    passed     99.99%
+  68  GER1     0.01%    passed     97.53%
+  69  GER10    0.00%    passed     99.80%
+  70  GER11    0.00%    passed     99.81%
+  71  GER2     0.00%    passed     96.97%
+  72  GER3     0.00%    passed     99.68%
+  73  GER4     0.01%    passed     96.57%
+  74  GER5     0.01%    passed     96.06%
+  75  GER6     0.01%    passed     95.94%
+  76  GER7     0.00%    passed     99.41%
+  77  GER8     0.01%    passed     99.65%
+  78  GER9     0.00%    passed     99.86%
+  79  GM2      0.00%    passed     99.97%
+  80  GM9      0.00%    passed     99.15%
+  81  GX14     0.00%    passed     99.98%
+  82  GX15     0.00%    passed     99.97%
+  83  GX16     0.00%    passed     99.94%
+  84  Gx17     0.01%    passed     99.99%
+  85  GX18     0.00%    passed     99.99%
+  86  GX4      0.00%    passed     99.92%
+  87  GZ10     0.00%    passed     99.94%
+  88  GZ3      0.00%    passed     99.98%
+  89  GZ4      0.01%    passed     99.98%
+  90  GZ5      0.00%    passed     99.97%
+  91  GZ6      0.01%    passed     99.95%
+  92  GZ7      0.00%    passed     99.98%
+  93  HZ1      0.00%    passed     99.87%
+  94  ID1      0.01%    passed     98.71%
+  95  ID2      0.00%    passed     99.79%
+  96  ID3      0.00%    passed     99.79%
+  97  ID4      0.00%    passed     99.93%
+  98  IN1      0.00%    passed     99.98%
+  99  IN10     0.00%    passed     99.99%
+ 100  IN12     0.00%    passed     99.90%
+ 101  IN13     0.00%    passed     99.94%
+ 102  IN14     0.00%    passed     99.92%
+ 103  IN15     0.00%    passed     98.48%
+ 104  IN16     0.00%    passed     98.28%
+ 105  IN18     0.00%    passed     99.83%
+ 106  IN19     0.00%    passed     99.92%
+ 107  IN2      0.00%    passed     99.97%
+ 108  IN20     0.00%    passed     99.85%
+ 109  IN3      0.01%    passed    100.00%
+ 110  IN4      0.00%    passed     99.92%
+ 111  IN5      0.00%    passed     99.94%
+ 112  IN6      0.02%    passed     99.94%
+ 113  IN7      0.00%    passed     99.97%
+ 114  IN8      0.01%    passed     99.96%
+ 115  IN9      0.23%    passed     99.98%
+ 116  IR10     0.00%    passed     99.75%
+ 117  IR2      0.00%    passed     99.84%
+ 118  IR4      0.01%    passed     99.07%
+ 119  IR5      0.00%    passed     98.96%
+ 120  IR6      0.01%    passed     99.07%
+ 121  IR7      0.00%    passed     98.94%
+ 122  IR8      0.00%    passed     98.94%
+ 123  IR9      0.00%    passed     99.83%
+ 124  JP1      0.01%    passed     99.97%
+ 125  JP10     0.00%    passed     99.96%
+ 126  JP11     0.00%    passed    100.00%
+ 127  JP12     0.01%    passed    100.00%
+ 128  JP13     0.01%    passed    100.00%
+ 129  JP14     0.00%    passed     99.97%
+ 130  JP15     0.01%    passed     99.98%
+ 131  JP16     0.00%    passed     99.89%
+ 132  JP17     0.00%    passed     99.96%
+ 133  JP18     0.01%    passed     99.80%
+ 134  JP2      0.00%    passed     99.97%
+ 135  JP3      0.00%    passed    100.00%
+ 136  JP4      0.01%    passed     99.95%
+ 137  JP5      0.00%    passed    100.00%
+ 138  JP6      0.00%    passed     99.92%
+ 139  JP7      0.01%    passed     99.88%
+ 140  JP8      0.00%    passed     99.89%
+ 141  JP9      0.00%    passed     99.97%
+ 142  KA1      0.00%    passed     99.92%
+ 143  KA2      0.00%    passed     98.48%
+ 144  KA5      0.00%    passed     99.39%
+ 145  KA6      0.00%    passed     99.39%
+ 146  KA9      0.00%    passed     99.73%
+ 147  KL1      0.00%    passed     99.44%
+ 148  KL2      0.01%    passed     99.29%
+ 149  KL3      0.00%    passed     99.95%
+ 150  KM1      0.00%    passed     99.96%
+ 151  KM35     0.00%    passed     99.96%
+ 152  KM46     0.00%    passed     99.96%
+ 153  KZ27     0.01%    passed     99.77%
+ 154  LY25     0.00%    passed     98.41%
+ 155  LY42     0.00%    passed     99.75%
+ 156  MH31     0.00%    passed     99.85%
+ 157  MH34     0.00%    passed     99.79%
+ 158  NE1      0.01%    passed     97.88%
+ 159  NE2      0.00%    passed     98.36%
+ 160  NY11     0.01%    passed     98.41%
+ 161  NY13     0.00%    passed     99.99%
+ 162  NY14     0.00%    passed     98.41%
+ 163  NY15     0.00%    passed     99.90%
+ 164  NY16     0.00%    passed     99.72%
+ 165  NY18     0.00%    passed     98.25%
+ 166  NY19     0.00%    passed     99.99%
+ 167  NY20     0.00%    passed     99.94%
+ 168  NY21     0.00%    passed     99.97%
+ 169  NY22     0.00%    passed     99.94%
+ 170  NY23     0.00%    passed     98.41%
+ 171  NY24     0.00%    passed     99.97%
+ 172  NY26     0.00%    passed     99.90%
+ 173  NY27     0.00%    passed     98.41%
+ 174  NY28     0.00%    passed     99.82%
+ 175  NY29     0.00%    passed     99.99%
+ 176  NY30     0.00%    passed     98.40%
+ 177  NY31     0.01%    passed     99.98%
+ 178  NY32     0.00%    passed     99.99%
+ 179  NY33     0.00%    passed     98.45%
+ 180  NY34     0.00%    passed     99.97%
+ 181  NY36     0.00%    passed     99.82%
+ 182  NY37     0.01%    passed     99.89%
+ 183  NY38     0.00%    passed     99.94%
+ 184  NY40     0.00%    passed     99.99%
+ 185  NY42     0.00%    passed     99.99%
+ 186  NY43     0.01%    passed     99.93%
+ 187  NY45     0.00%    passed     99.99%
+ 188  NY46     0.01%    passed     99.98%
+ 189  PA1      0.00%    passed     99.78%
+ 190  PA2      0.00%    passed     99.92%
+ 191  PA3      0.01%    passed     99.43%
+ 192  PA4      0.00%    passed     99.94%
+ 193  PX1      0.00%    passed     99.93%
+ 194  PX12     0.00%    passed     99.93%
+ 195  PX13     0.00%    passed     99.93%
+ 196  PX14     0.00%    passed     99.93%
+ 197  PX15     0.00%    passed     99.93%
+ 198  PX16     0.00%    passed     99.93%
+ 199  PX18     0.00%    passed     99.93%
+ 200  PX19     0.48%    passed     99.54%
+ 201  PX2      0.01%    passed     99.92%
+ 202  PX20     0.01%    passed     99.92%
+ 203  PX21     0.00%    passed     99.93%
+ 204  PX23     0.00%    passed     99.93%
+ 205  PX24     0.01%    passed     99.92%
+ 206  PX25     0.00%    passed     99.93%
+ 207  PX27     0.00%    passed     99.93%
+ 208  PX28     0.00%    passed     99.93%
+ 209  PX29     0.01%    passed     99.95%
+ 210  PX3      0.00%    passed     99.93%
+ 211  PX32     0.00%    passed     99.93%
+ 212  PX33     0.00%    passed     99.93%
+ 213  PX34     0.00%    passed     99.93%
+ 214  PX35     0.02%    passed     99.88%
+ 215  PX36     0.00%    passed     99.93%
+ 216  PX4      0.01%    passed     99.92%
+ 217  PX5      0.00%    passed     99.93%
+ 218  PX6      0.00%    passed     99.93%
+ 219  PX7      0.00%    passed     99.93%
+ 220  PX8      0.01%    passed     99.80%
+ 221  QT1      0.00%    passed     99.88%
+ 222  QT2      0.00%    passed     99.45%
+ 223  RU1      0.00%    passed     99.61%
+ 224  RU10     0.00%    passed     99.74%
+ 225  RU11     0.00%    passed     96.56%
+ 226  RU12     0.01%    passed     99.57%
+ 227  RU13     0.00%    passed     99.95%
+ 228  RU14     0.00%    passed     99.58%
+ 229  RU16     0.00%    passed     99.47%
+ 230  RU3      0.00%    passed     99.76%
+ 231  RU4      0.00%    passed     99.50%
+ 232  RU5      0.00%    passed     99.89%
+ 233  RU6      0.00%    passed     99.96%
+ 234  RU7      0.00%    passed     96.95%
+ 235  RU9      0.03%    passed     98.42%
+ 236  SH1      0.01%    passed     99.92%
+ 237  SH10     0.01%    passed     99.93%
+ 238  SH11     0.00%    passed     99.91%
+ 239  SH12     0.01%    passed     99.95%
+ 240  SH13     0.01%    passed     99.92%
+ 241  SH14     0.00%    passed     99.96%
+ 242  SH15     0.01%    passed     99.97%
+ 243  SH16     0.00%    passed     99.93%
+ 244  SH17     0.00%    passed     99.96%
+ 245  SH18     0.00%    passed     99.92%
+ 246  SH19     0.01%    passed     99.90%
+ 247  SH2      0.00%    passed     99.92%
+ 248  SH20     0.00%    passed     99.91%
+ 249  SH21     0.01%    passed     97.94%
+ 250  SH22     0.01%    passed     99.69%
+ 251  SH23     0.01%    passed     98.11%
+ 252  SH24     0.01%    passed     99.98%
+ 253  SH26     0.01%    passed     99.93%
+ 254  SH27     0.00%    passed     99.97%
+ 255  SH28     0.00%    passed     99.92%
+ 256  SH3      0.00%    passed     99.93%
+ 257  SH30     0.00%    passed     99.91%
+ 258  SH31     0.01%    passed     98.30%
+ 259  SH32     0.00%    passed     99.88%
+ 260  SH33     0.01%    passed     99.93%
+ 261  SH34     0.00%    passed     99.86%
+ 262  SH35     0.00%    passed     97.70%
+ 263  SH37     0.00%    passed     99.82%
+ 264  SH38     0.00%    passed     99.97%
+ 265  SH39     0.00%    passed     98.74%
+ 266  SH4      0.00%    passed     99.93%
+ 267  SH40     0.00%    passed     98.64%
+ 268  SH41     0.00%    passed     98.74%
+ 269  SH42     0.01%    passed     99.87%
+ 270  SH43     0.00%    passed     99.91%
+ 271  SH44     0.00%    passed     99.87%
+ 272  SH45     0.00%    passed     99.93%
+ 273  SH5      0.00%    passed     98.78%
+ 274  SH6      0.01%    passed     99.83%
+ 275  SH7      0.00%    passed     99.92%
+ 276  SH8      0.00%    passed     99.91%
+ 277  SH9      0.00%    passed     98.27%
+ 278  SK1      0.01%    passed     99.87%
+ 279  SK2      0.00%    passed     99.96%
+ 280  SK3      0.00%    passed     99.97%
+ 281  SK4      0.00%    passed     99.99%
+ 282  SK5      0.01%    passed     99.99%
+ 283  SL1      0.00%    passed     99.98%
+ 284  SL2      0.00%    passed     99.99%
+ 285  SP1      0.09%    passed     42.89%
+ 286  SY3      0.03%    passed     99.97%
+ 287  T1       0.04%    passed     99.58%
+ 288  TW1      0.01%    passed     99.83%
+ 289  TW2      0.00%    passed     99.99%
+ 290  TW3      0.00%    passed     99.97%
+ 291  TW4      0.02%    passed     99.82%
+ 292  UK1      0.00%    passed     99.60%
+ 293  UK2      0.00%    passed     99.69%
+ 294  UK3      0.00%    passed     99.72%
+ 295  UQ1      0.00%    passed     99.48%
+ 296  VN1      0.00%    passed     99.93%
+ 297  VN2      0.00%    passed     99.76%
+ 298  WH1      0.00%    passed     99.93%
+ 299  WH2      0.00%    passed     99.81%
+ 300  WH4      0.00%    passed     98.30%
+ 301  WH5      0.01%    passed     99.84%
+ 302  WN7      0.00%    passed     99.97%
+ 303  XG1      0.00%    passed     99.70%
+ 304  XG2      0.00%    passed     99.86%
+ 305  XG3      0.00%    passed     99.81%
+ 306  XG4      0.00%    passed     99.96%
+ 307  XG5      0.00%    passed     99.81%
+ 308  XG6      0.00%    passed     99.96%
+ 309  XG7      0.00%    passed     99.96%
+ 310  XZ1      0.00%    passed     99.93%
+ 311  XZ10     0.00%    passed     99.94%
+ 312  XZ15     0.00%    passed     99.87%
+ 313  XZ16     0.00%    passed     99.93%
+ 314  XZ17     0.00%    passed     99.93%
+ 315  XZ18     0.00%    passed     99.94%
+ 316  XZ19     0.02%    passed     99.90%
+ 317  XZ20     0.00%    passed     99.93%
+ 318  XZ3      0.03%    passed     99.96%
+ 319  XZ4      0.00%    passed     99.93%
+ 320  XZ5      0.00%    passed     99.93%
+ 321  XZ6      0.00%    passed     99.78%
+ 322  XZ7      0.00%    passed     99.47%
+ 323  XZ8      0.00%    passed     99.93%
+ 324  XZ9      0.00%    passed     99.47%
+ 325  YL5      0.00%    passed     99.74%
+ 326  YM10     0.00%    passed     99.98%
+ 327  YM11     0.02%    passed     99.79%
+ 328  YM12     0.00%    passed     99.98%
+ 329  YM13     0.00%    passed     99.69%
+ 330  YM2      0.00%    passed     99.74%
+ 331  YM3      0.00%    passed     99.84%
+ 332  YM30     0.00%    passed    100.00%
+ 333  YM38     0.01%    passed     99.86%
+ 334  YM39     0.00%    passed     99.74%
+ 335  YM4      0.00%    passed     99.87%
+ 336  YM40     0.01%    passed     99.98%
+ 337  YM56     0.00%    passed     99.74%
+ 338  YM60     0.00%    passed     99.84%
+ 339  YM61     0.00%    passed     99.74%
+ 340  YM64     0.01%    passed     99.86%
+ 341  YM66     0.01%    passed     99.98%
+ 342  YM68     0.01%    passed     99.98%
+ 343  YM69     0.00%    passed     99.98%
+ 344  YM7      0.00%    passed     99.87%
+ 345  YM70     0.00%    passed     99.87%
+ 346  YM71     0.01%    passed     99.98%
+ 347  YM72     0.01%    passed     99.98%
+ 348  YM8      0.00%    passed     99.69%
+ 349  YM9      0.01%    passed     99.84%
+ 350  YT2      0.01%    passed     98.60%
+****  TOTAL    0.00%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: XG4 is identical to 4295 but kept for subsequent analysis
+NOTE: XG5 is identical to 4296 but kept for subsequent analysis
+NOTE: 4316 is identical to 4315 but kept for subsequent analysis
+NOTE: IN3 is identical to AF5 but kept for subsequent analysis
+NOTE: BY2 is identical to BY1 but kept for subsequent analysis
+NOTE: CE7 is identical to CE3 but kept for subsequent analysis
+NOTE: CN14 is identical to CN13 but kept for subsequent analysis
+NOTE: FA6 is identical to FA1 but kept for subsequent analysis
+NOTE: FA7 is identical to FA5 but kept for subsequent analysis
+NOTE: GZ3 is identical to GD15 but kept for subsequent analysis
+NOTE: ID3 is identical to ID2 but kept for subsequent analysis
+NOTE: IR6 is identical to IR4 but kept for subsequent analysis
+NOTE: IR8 is identical to IR7 but kept for subsequent analysis
+NOTE: KA6 is identical to KA5 but kept for subsequent analysis
+NOTE: KM35 is identical to KM1 but kept for subsequent analysis
+NOTE: NY19 is identical to NY13 but kept for subsequent analysis
+NOTE: NY23 is identical to NY14 but kept for subsequent analysis
+NOTE: NY26 is identical to NY15 but kept for subsequent analysis
+NOTE: NY22 is identical to NY20 but kept for subsequent analysis
+NOTE: NY24 is identical to NY21 but kept for subsequent analysis
+NOTE: PX12 is identical to PX1 but kept for subsequent analysis
+NOTE: SH26 is identical to SH10 but kept for subsequent analysis
+NOTE: SH17 is identical to SH14 but kept for subsequent analysis
+NOTE: SH4 is identical to SH16 but kept for subsequent analysis
+NOTE: SH30 is identical to SH20 but kept for subsequent analysis
+NOTE: SH7 is identical to SH28 but kept for subsequent analysis
+NOTE: SH41 is identical to SH39 but kept for subsequent analysis
+NOTE: XZ16 is identical to XZ1 but kept for subsequent analysis
+NOTE: XZ18 is identical to XZ10 but kept for subsequent analysis
+NOTE: XZ9 is identical to XZ7 but kept for subsequent analysis
+NOTE: YM12 is identical to YM10 but kept for subsequent analysis
+NOTE: YM8 is identical to YM13 but kept for subsequent analysis
+NOTE: YM39 is identical to YM2 but kept for subsequent analysis
+NOTE: YM60 is identical to YM3 but kept for subsequent analysis
+NOTE: YM7 is identical to YM4 but kept for subsequent analysis
+NOTE: YM68 is identical to YM66 but kept for subsequent analysis
+NOTE: 39 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: XG7 (identical to 4295) is ignored but added at the end
+NOTE: 4317 (identical to 4315) is ignored but added at the end
+NOTE: 4319 (identical to 4315) is ignored but added at the end
+NOTE: KM46 (identical to KM1) is ignored but added at the end
+NOTE: NY29 (identical to NY13) is ignored but added at the end
+NOTE: NY32 (identical to NY13) is ignored but added at the end
+NOTE: NY40 (identical to NY13) is ignored but added at the end
+NOTE: NY42 (identical to NY13) is ignored but added at the end
+NOTE: NY45 (identical to NY13) is ignored but added at the end
+NOTE: NY27 (identical to NY14) is ignored but added at the end
+NOTE: NY38 (identical to NY20) is ignored but added at the end
+NOTE: NY34 (identical to NY21) is ignored but added at the end
+NOTE: PX13 (identical to PX1) is ignored but added at the end
+NOTE: PX14 (identical to PX1) is ignored but added at the end
+NOTE: PX15 (identical to PX1) is ignored but added at the end
+NOTE: PX16 (identical to PX1) is ignored but added at the end
+NOTE: PX18 (identical to PX1) is ignored but added at the end
+NOTE: PX21 (identical to PX1) is ignored but added at the end
+NOTE: PX23 (identical to PX1) is ignored but added at the end
+NOTE: PX25 (identical to PX1) is ignored but added at the end
+NOTE: PX27 (identical to PX1) is ignored but added at the end
+NOTE: PX28 (identical to PX1) is ignored but added at the end
+NOTE: PX3 (identical to PX1) is ignored but added at the end
+NOTE: PX32 (identical to PX1) is ignored but added at the end
+NOTE: PX33 (identical to PX1) is ignored but added at the end
+NOTE: PX34 (identical to PX1) is ignored but added at the end
+NOTE: PX36 (identical to PX1) is ignored but added at the end
+NOTE: PX5 (identical to PX1) is ignored but added at the end
+NOTE: PX6 (identical to PX1) is ignored but added at the end
+NOTE: PX7 (identical to PX1) is ignored but added at the end
+NOTE: SH8 (identical to SH20) is ignored but added at the end
+NOTE: XZ17 (identical to XZ1) is ignored but added at the end
+NOTE: XZ4 (identical to XZ1) is ignored but added at the end
+NOTE: XZ5 (identical to XZ1) is ignored but added at the end
+NOTE: XZ8 (identical to XZ1) is ignored but added at the end
+NOTE: YM56 (identical to YM2) is ignored but added at the end
+NOTE: YM61 (identical to YM2) is ignored but added at the end
+NOTE: YM70 (identical to YM4) is ignored but added at the end
+NOTE: YM72 (identical to YM66) is ignored but added at the end
+Alignment was printed to Mit.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to Mit.uniqueseq.phy
+
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.158 seconds
+Perform fast likelihood tree search using GTR+I+G model...
+Estimate model parameters (epsilon = 5.000)
+Perform nearest neighbor interchange...
+Estimate model parameters (epsilon = 1.000)
+1. Initial log-likelihood: -53274.742
+Optimal log-likelihood: -53273.977
+Rate parameters:  A-C: 1.96094  A-G: 33.91830  A-T: 2.07531  C-G: 0.69302  C-T: 30.50837  G-T: 1.00000
+Base frequencies:  A: 0.346  C: 0.245  G: 0.123  T: 0.286
+Proportion of invariable sites: 0.427
+Gamma shape alpha: 0.354
+Parameters optimization took 1 rounds (1.019 sec)
+Time for fast ML tree search: 12.997 seconds
+
+NOTE: ModelFinder requires 184 MB RAM!
+ModelFinder will test up to 286 DNA models (sample size: 16289) ...
+ No. Model         -LnL         df  AIC          AICc         BIC
+  1  GTR+F         55212.049    627 111678.097   111728.382   116504.897
+  2  GTR+F+I       53400.352    628 108056.704   108107.152   112891.202
+  3  GTR+F+G4      53392.884    628 108041.767   108092.216   112876.265
+  4  GTR+F+I+G4    53244.054    629 107746.108   107796.720   112588.304
+  5  GTR+F+R2      53228.638    629 107715.275   107765.888   112557.472
+  6  GTR+F+R3      53227.071    631 107716.141   107767.082   112573.734
+ 18  SYM+R2        54370.604    626 109993.207   110043.329   114812.309
+ 31  TVM+F+R2      53228.740    628 107713.479   107763.928   112547.977
+ 44  TVMe+R2       54402.009    625 110054.018   110103.976   114865.421
+ 57  TIM3+F+R2     53253.177    627 107760.354   107810.639   112587.154
+ 70  TIM3e+R2      54482.536    624 110213.072   110262.867   115016.777
+ 83  TIM2+F+R2     53230.347    627 107714.693   107764.978   112541.493
+ 96  TIM2e+R2      54374.839    624 109997.678   110047.474   114801.383
+109  TIM+F+R2      53253.734    627 107761.468   107811.753   112588.268
+122  TIMe+R2       54484.428    624 110216.856   110266.652   115020.561
+135  TPM3u+F+R2    53253.282    626 107758.564   107808.686   112577.666
+148  TPM3+F+R2     53253.282    626 107758.564   107808.686   112577.666
+161  TPM2u+F+R2    53230.480    626 107712.961   107763.082   112532.062
+174  TPM2+F+R2     53230.479    626 107712.959   107763.080   112532.060
+187  K3Pu+F+R2     53253.875    626 107759.751   107809.872   112578.852
+200  K3P+R2        54522.157    623 110290.315   110339.948   115086.321
+213  TN+F+R2       53253.748    626 107759.497   107809.618   112578.598
+226  TNe+R2        54485.278    623 110216.556   110266.189   115012.563
+239  HKY+F+R2      53253.897    625 107757.795   107807.753   112569.198
+252  K2P+R2        54523.070    622 110290.141   110339.612   115078.450
+265  F81+F+R2      56524.721    624 114297.442   114347.238   119101.147
+278  JC+R2         57551.905    621 116345.811   116395.120   121126.421
+Akaike Information Criterion:           TPM2+F+R2
+Corrected Akaike Information Criterion: TPM2+F+R2
+Bayesian Information Criterion:         TPM2+F+R2
+Best-fit model: TPM2+F+R2 chosen according to BIC
+
+All model information printed to Mit.model.gz
+CPU time for ModelFinder: 193.601 seconds (0h:3m:13s)
+Wall-clock time for ModelFinder: 194.412 seconds (0h:3m:14s)
+Generating 1000 samples for ultrafast bootstrap (seed: 556717)...
+
+NOTE: 42 MB RAM (0 GB) is required!
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -53230.479
+Optimal log-likelihood: -53230.479
+Rate parameters:  A-C: 2.31681  A-G: 35.50066  A-T: 2.31681  C-G: 1.00000  C-T: 35.50066  G-T: 1.00000
+Base frequencies:  A: 0.346  C: 0.245  G: 0.123  T: 0.286
+Site proportion and rates:  (0.898,0.294) (0.102,7.247)
+Parameters optimization took 1 rounds (0.536 sec)
+Computing ML distances based on estimated model parameters... 2.023 sec
+Computing BIONJ tree...
+0.100 seconds
+Log-likelihood of BIONJ tree: -53377.552
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 17.365 second
+Computing log-likelihood of 98 initial trees ... 9.420 seconds
+Current best score: -53230.479
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -53229.090
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 2: -53227.301
+BETTER TREE FOUND at iteration 3: -53227.297
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 4: -53226.170
+Iteration 10 / LogL: -53227.996 / Time: 0h:0m:56s
+Iteration 20 / LogL: -53228.738 / Time: 0h:1m:21s
+Finish initializing candidate tree set (20)
+Current best tree score: -53226.170 / CPU time: 77.707
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -53229.033 / Time: 0h:1m:48s (0h:4m:36s left)
+Iteration 40 / LogL: -53269.487 / Time: 0h:2m:16s (0h:3m:44s left)
+Iteration 50 / LogL: -53231.160 / Time: 0h:2m:43s (0h:2m:59s left)
+Log-likelihood cutoff on original alignment: -53273.634
+Iteration 60 / LogL: -53229.350 / Time: 0h:3m:10s (0h:2m:21s left)
+Iteration 70 / LogL: -53287.049 / Time: 0h:3m:35s (0h:1m:46s left)
+Iteration 80 / LogL: -53244.290 / Time: 0h:4m:3s (0h:1m:13s left)
+Iteration 90 / LogL: -53410.665 / Time: 0h:4m:29s (0h:0m:42s left)
+Iteration 100 / LogL: -53226.917 / Time: 0h:4m:56s (0h:0m:11s left)
+Log-likelihood cutoff on original alignment: -53273.634
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.997
+TREE SEARCH COMPLETED AFTER 105 ITERATIONS / Time: 0h:5m:10s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -53226.170
+Optimal log-likelihood: -53226.170
+Rate parameters:  A-C: 2.31802  A-G: 35.51077  A-T: 2.31802  C-G: 1.00000  C-T: 35.51077  G-T: 1.00000
+Base frequencies:  A: 0.346  C: 0.245  G: 0.123  T: 0.286
+Site proportion and rates:  (0.899,0.294) (0.101,7.255)
+Parameters optimization took 1 rounds (0.532 sec)
+BEST SCORE FOUND : -53226.170
+Creating bootstrap support values...
+Split supports printed to NEXUS file Mit.splits.nex
+Total tree length: 0.331
+
+Total number of iterations: 105
+CPU time used for tree search: 304.211 sec (0h:5m:4s)
+Wall-clock time used for tree search: 306.591 sec (0h:5m:6s)
+Total CPU time used: 309.137 sec (0h:5m:9s)
+Total wall-clock time used: 311.689 sec (0h:5m:11s)
+
+Computing bootstrap consensus tree...
+Reading input file Mit.splits.nex...
+311 taxa and 3465 splits.
+Consensus tree written to Mit.contree
+Reading input trees file Mit.contree
+Log-likelihood of consensus tree: -53231.520
+
+Analysis results written to: 
+  IQ-TREE report:                Mit.iqtree
+  Maximum-likelihood tree:       Mit.treefile
+  Likelihood distances:          Mit.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          Mit.splits.nex
+  Consensus tree:                Mit.contree
+  Screen log file:               Mit.log
+
+Date and Time: Sat Jun  8 20:20:07 2024
