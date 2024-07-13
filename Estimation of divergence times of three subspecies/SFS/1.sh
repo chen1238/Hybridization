@@ -6,6 +6,9 @@
 #./easySFS.py
 
 
+vcftools --vcf ../autosome.recode.vcf --hwe 0.001 --keep keep.txt --recode --out autosome
+
+
 ./easySFS.py -i autosome.recode.vcf -p group.txt -a -f --preview > preview.txt
 
 
