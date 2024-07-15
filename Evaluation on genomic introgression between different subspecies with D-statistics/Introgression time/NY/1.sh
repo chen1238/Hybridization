@@ -8,6 +8,4 @@ do
    cd ..
 done
  
-cat run{1..100}/autosome/autosome.bestlhoods | grep -v MaxObsLhood | awk '{print NR,$8}' | sort -k 2 >rank.txt
-
-cat run{1..100}/autosome/autosome.bestlhoods > NY.txt
+cat run{1..100}/autosome-1/autosome-1.bestlhoods > NY.txt
