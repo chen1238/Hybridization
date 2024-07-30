@@ -1,5 +1,5 @@
 PREFIX=autosome
-for i in {1..20}
+for i in {1..50}
 do
    mkdir run$i
    cp ${PREFIX}* ./run$i
